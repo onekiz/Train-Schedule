@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>
+		Train-Time
+	</title>
+	<link href="https://fonts.googleapis.com/css?family=Cinzel|Lemonada|Lobster" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+
+
+    <div class = "container">
+
+			<div class = "logout">
+				<button class = "btn btn-primary" id = "logout">Log Out</button>
+				<!-- <input id = "email" class="form-control" type = "email" placeholder ="Email">
+				<input id = "password" class="form-control" type = "email" placeholder ="Password">
+				<button class = "btn btn-primary" id = "login">Log In</button>
+				<button class = "btn btn-success" id = "signup">Sign Up</button>
+				<button class = "btn btn-primary" id = "logout">Log Out</button>
+				<button class = "btn btn-primary" id = "github">Log In with GitHub</button> -->
+			</div>
+
+
+        <div class = "jumbotron">
+            <h1>Anytime is Train time</h1>
+            <h3>Choo Choo. Chee Chee</h3>
+        </div>
+
+
+
+        <div class = "row" id="schedule">
+						<h4 class = "header"> Current Train Schedule </h4>
+            <table class="table">
+
+              <thead>
+
+                  <tr>
+                    <th>Train Name</th>
+                    <th>Destination</th>
+                    <th>Frequency min.</th>
+                    <th>Next Arrival</th>
+                    <th>Minutes Away</th>
+                </tr>
+              </thead>
+              <tbody id = "train">
+
+              </tbody>
+            </table>
+        </div>
+
+
+
+		<div class = "row" id = "addTrain">
+
+      <form>
+        <h4 class = "header">Add Train</h4>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Train Name</label>
+          <input type="name" class="form-control" id="trainName" placeholder="Train Name">
+          </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Destination</label>
+          <input type="destination" class="form-control" id="destination" placeholder="Destination">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">First Train Time (HH:mm military time)</label>
+          <input type="time" class="form-control" id="time" placeholder="Train Time">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Frequenct (min)</label>
+          <input type="minutes" class="form-control" id="minutes" placeholder="Minutes">
+        </div>
+
+        <button type="submit" class="btn btn-primary submit">Submit</button>
+      </form>
+
+    </div>
+</div>
+
+
+<script src="assets/javascript/main.js"></script>
+</body>
+
+</html>

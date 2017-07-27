@@ -1,0 +1,53 @@
+#schedule{
+  margin: 10px;
+  border: 3px solid #55acee;
+  border-radius: 5px;
+}
+
+.auth {
+  border: 3px solid #55acee;
+  border-radius: 8px;
+  height: 300px;
+  width: 400px;
+  padding: 50px;
+  margin-left: 30%;
+  background-color: #f7f5f3;
+}
+
+h3{
+  margin: 5px;
+}
+
+#github {
+  width: 280px;
+}
+
+#addTrain{
+  margin: 10px;
+  margin-top: 30px;
+  border: 3px solid #55acee;
+  border-radius: 5px;
+}
+
+
+.jumbotron{
+  text-align: center;
+  background-color: brown;
+  color: white;
+}
+
+
+.form-group, .btn{
+  margin:10px;
+}
+
+.deleteButton{
+  margin: 5px;
+}
+
+.header {
+  margin: 0px;
+  padding: 10px;
+  background-color: #55acee;
+  color: white;
+}
