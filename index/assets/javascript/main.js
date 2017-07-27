@@ -59,7 +59,7 @@ var objkey = [];
 //
 $("#logout").on("click", function(){
     firebase.auth().signOut();
-    window.location = "../signin.html";
+    window.location = "../index.html";
 });
 //
 //
