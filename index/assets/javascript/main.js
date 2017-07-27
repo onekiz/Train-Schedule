@@ -16,47 +16,7 @@ var database = firebase.database();
 var ref = database.ref("train");
 var objkey = [];
 
-//var provider = new firebase.auth.GithubAuthProvider();
-//
-// $("#github").on("click", function(event){
-//     event.preventDefault();
-//     firebase.auth().signInWithPopup(provider).then(function(result) {
-//   // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-//           var token = result.credential.accessToken;
-//   // The signed-in user info.
-//           var user = result.user;
-//           console.log(user);
-//   // ...
-//     }).catch(function(error) {
-//   // Handle Errors here.
-//           var errorCode = error.code;
-//           var errorMessage = error.message;
-//   // The email of the user's account used.
-//           var email = error.email;
-//   // The firebase.auth.AuthCredential type that was used.
-//           var credential = error.credential;
-//           console.log(errorMessage);
-//     });
-// });
-//
-// $("#login").on("click", function(){
-//
-//     var auth = firebase.auth();
-//     var email = $("#email").val();
-//     var pass = $("#password").val();
-//     var promise = auth.signInWithEmailAndPassword(email, pass);
-//     promise.catch(function(event){console.log(event.message);});
-// });
-//
-// $("#signup").on("click", function(){
-//
-//     var auth = firebase.auth();
-//     var email = $("#email").val();
-//     var pass = $("#password").val();
-//     var promise = auth.createUserWithEmailAndPassword(email, pass);
-//     promise.catch(function(event){console.log(event.message);});
-// });
-//
+
 $("#logout").on("click", function(){
     firebase.auth().signOut();
     window.location = "../index.html";
