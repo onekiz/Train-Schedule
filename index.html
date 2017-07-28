@@ -22,7 +22,7 @@
 			<div class = "auth">
 				<h3> Please Sign In</h3>
 				<input id = "email" class="form-control" type = "email" placeholder ="Email"></input>
-				<input id = "password" class="form-control" type = "email" placeholder ="Password"></input>
+				<input id = "password" class="form-control" type = "password" placeholder ="Password"></input>
 				<button class = "btn btn-primary" id = "login">Log In</button>
 				<button class = "btn btn-success" id = "signup">Sign Up</button>
 				<!-- <button class = "btn btn-primary" id = "logout">Log Out</button> -->
@@ -35,7 +35,7 @@
 	<script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
 
 	<script>
-
+////Firebase config input////////
 	var config = {
 			apiKey: "AIzaSyA3_webVEyTgNu_0FZryAHMriudnhqbaz4",
 			authDomain: "hw-7-train.firebaseapp.com",
@@ -44,9 +44,10 @@
 			storageBucket: "",
 			messagingSenderId: "919799265078"
 		};
-
+//////initializing firebase app/////////
 	firebase.initializeApp(config);
 
+//////Github account //////////////
 	var provider = new firebase.auth.GithubAuthProvider();
 
 	$("#github").on("click", function(event){
@@ -70,6 +71,7 @@
 	     });
 		 });
 
+//////////Listening Login with email and password////////
 			$("#login").on("click", function(){
 
 					var auth = firebase.auth();
@@ -79,6 +81,7 @@
 					promise.catch(function(event){console.log(event.message);});
 			});
 
+///////New user signing in with new email and password/////////
 			$("#signup").on("click", function(){
 
 					var auth = firebase.auth();
@@ -87,10 +90,6 @@
 					var promise = auth.createUserWithEmailAndPassword(email, pass);
 					promise.catch(function(event){console.log(event.message);});
 			});
-
-			// $("#logout").on("click", function(){
-			// 		firebase.auth().signOut();
-			// });
 
 
 			firebase.auth().onAuthStateChanged(function(user){
@@ -104,6 +103,6 @@
 				}
 			});
 
-			</script>
-			</body>
-	</html>
+	</script>
+</body>
+</html>
