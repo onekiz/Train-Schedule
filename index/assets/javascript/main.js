@@ -13,9 +13,9 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
-var ref = database.ref("train");
+var ref = database.ref("/train");
 var objkey = [];
-
+var min = 0;
 
 $("#logout").on("click", function(){
     firebase.auth().signOut();
@@ -63,6 +63,7 @@ function addDatabase (dat, keys){
 
         for (var property in dat[keys[i]]){
          var newcol = $("<td>");
+         newcol.attr("id",property+ind);
          //if (dat[keys[i]].hasOwnProperty(property)) {
             newcol.html(dat[keys[i]][property]);
             newrow.append(newcol);
@@ -77,22 +78,27 @@ function addDatabase (dat, keys){
 }
 
 
+function time (){
+  var conv = moment($("#time").val(), "hh:mm");
+  var diff = moment(conv).diff(moment(),"minutes");
+  var min = Math.abs(diff) % parseInt($("#minutes").val());
+  if (diff>=0){
+    return min;
+  }
+  else{
+    return (parseInt($("#minutes").val()) - min);
+  }
+}
+
 
 function train (){
-
-     var date = new Date();
-     var time = $("#time").val().split(":");
-     date.getHours()-parseInt(time[0]);
-     time[0] = (parseInt(time[0])-date.getHours()-1)*60;
-     time[1] = (60 - date.getMinutes() + parseInt(time[1]));
-     time = time[0]+time[1];
 
       var data = {
             atrainName: $("#trainName").val(),
             bdestination: $("#destination").val(),
             cminutes: $("#minutes").val(),
             dtime: $("#time").val(),
-            etimeleft: time+"min"
+            etimeleft: time()
       };
       ref.push(data);
 }
@@ -132,21 +138,35 @@ $(document).on("click",".saveButton", function(event){
       event.preventDefault();
 
       var id = $(this).attr("data-index");
-      var date = new Date();
-      var time = $("#newTime"+id).val().split(":");
-      date.getHours()-parseInt(time[0]);
-      time[0] = (parseInt(time[0])-date.getHours()-1)*60;
-      time[1] = (60 - date.getMinutes() + parseInt(time[1]));
-      time = time[0]+time[1];
-
-
       var data = {
             atrainName: $("#newName"+id).val(),
             bdestination: $("#newDestination"+id).val(),
             cminutes: $("#newMinutes"+id).val(),
             dtime: $("#newTime"+id).val(),
-            etimeleft: time+"min"
+            etimeleft: time()
       };
       ref.child(objkey[id]).update(data);
       $("#save"+id).remove();
 });
+
+
+  ref.once("value", function(data){
+      var dat = data.val();
+      for (var i=0; i<objkey.length; i++){
+
+        var conv = moment(dat[objkey[i]]["dtime"],"hh:mm");
+        var diff = moment(conv).diff(moment(),"minutes");
+        var min = Math.abs(diff) % (dat[objkey[i]]["cminutes"]);
+
+        if (diff>=0){
+          ref.child(objkey[i]).update({etimeleft: min});
+          $("#etimeleft"+i).html(min);
+        }
+        else{
+          ref.child(objkey[i]).update({etimeleft: dat[objkey[i]]["cminutes"] - min});
+          $("#etimeleft"+i).html(dat[objkey[i]]["cminutes"] - min);
+        }
+
+
+      }
+  });
